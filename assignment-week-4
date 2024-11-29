@@ -1,0 +1,34 @@
+def modify_file(input_file_path, output_file_path):
+    try:
+        # Open the input file in read mode
+        with open(input_file_path, 'r') as infile:
+            content = infile.read()  # Read all content from the input file
+        
+        # Modify the content (for example, convert to uppercase)
+        modified_content = content.upper()  # Example modification
+        
+        # Open the output file in write mode
+        with open(output_file_path, 'w') as outfile:
+            outfile.write(modified_content)  # Write the modified content to the output file
+        
+        print("File has been modified and saved to {output_file_path}")
+    
+    except FileNotFoundError:
+        print("The file {input_file_path} was not found.")
+    except PermissionError:
+        print("You do not have permission to read the file {input_file_path}.")
+    except IOError as e:
+        print("An error occurred while accessing the file: {e}")
+
+def get_filename_from_user():
+    # Ask the user for the input file name
+    input_file = input("Enter the name of the input file: ")
+
+    # Ask the user for the output file name
+    output_file = input("Enter the name of the output file: ")
+
+    # Call the modify_file function
+    modify_file(input_file, output_file)
+
+# Call the function to interact with the user
+get_filename_from_user()
